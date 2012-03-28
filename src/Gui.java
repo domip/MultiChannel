@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,11 +31,15 @@ public class Gui {
 	private JMenuItem aboutItem;
 	private JMenuItem helpItem;
 	private JTextArea textContent;
+	private JLabel maxNumberCharacters;
 	private JLabel receiver;
 	private JPanel north;
 	private JPanel south;
 	private JTextField receiverAdd;
 	private JButton sendButton;
+	private JButton sendLaterButton;
+	private JButton getFileButton;
+	
 
 	public static void main(String[] args) {
 		new Gui();
@@ -128,6 +133,17 @@ public class Gui {
 
 		mmsItem = new JMenuItem("New MMS");
 		mmsMenu.add(mmsItem);
+		mmsItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+				createMmsLayout();
+				
+			}
+		});
+		
 
 		emailItem = new JMenuItem("New Email");
 		emailMenu.add(emailItem);
@@ -144,25 +160,39 @@ public class Gui {
 
 	public void createSmsLayout() {
 
+		frame.getContentPane().removeAll();
 		
-		textContent = new JTextArea(15, 35);
-		//textContent.setLineWrap(true);
+		textContent = new JTextArea(38, 33);
+		textContent.setLineWrap(true);
 
 		receiverAdd = new JTextField(10);
 
 		receiver = new JLabel("Receiver: ");
+		maxNumberCharacters = new JLabel("Max. number of characters");
 
 		sendButton = new JButton("Send");
-
+		sendLaterButton = new JButton("Send later");
+		
+		JPanel center = new JPanel();
 		north = new JPanel();
 		south = new JPanel();
 
 		north.add(receiver);
 		north.add(receiverAdd);
+		north.setBackground(Color.GRAY);
+		
+		center.add(textContent);
+		center.setBackground(Color.GRAY);
+		
+		south.add(maxNumberCharacters);
+		south.add(sendLaterButton);
 		south.add(sendButton);
+		south.setBackground(Color.GRAY);
+		
+		
 
 		frame.getContentPane().add(BorderLayout.NORTH, north);
-		frame.getContentPane().add(BorderLayout.CENTER, textContent);
+		frame.getContentPane().add(BorderLayout.CENTER, center);
 		frame.getContentPane().add(BorderLayout.SOUTH, south);
 		
 		frame.setVisible(true);
@@ -170,7 +200,46 @@ public class Gui {
 	}
 
 	public void createMmsLayout() {
-		// TODO
+		
+		frame.getContentPane().removeAll();
+		
+		textContent = new JTextArea(38, 33);
+		textContent.setLineWrap(true);
+
+		receiverAdd = new JTextField(10);
+
+		receiver = new JLabel("Receiver: ");
+		maxNumberCharacters = new JLabel("Max. number of characters");
+
+		sendButton = new JButton("Send");
+		sendLaterButton = new JButton("Send later");
+		getFileButton = new JButton("Add File");
+		
+		JPanel center = new JPanel();
+		north = new JPanel();
+		south = new JPanel();
+
+		north.add(receiver);
+		north.add(receiverAdd);
+		north.add(getFileButton);
+		north.setBackground(Color.GRAY);
+		
+		center.add(textContent);
+		center.setBackground(Color.GRAY);
+		
+		
+		south.add(maxNumberCharacters);
+		south.add(sendLaterButton);
+		south.add(sendButton);
+		south.setBackground(Color.GRAY);
+		
+		
+
+		frame.getContentPane().add(BorderLayout.NORTH, north);
+		frame.getContentPane().add(BorderLayout.CENTER, center);
+		frame.getContentPane().add(BorderLayout.SOUTH, south);
+		
+		frame.setVisible(true);
 	}
 
 	public void createEmailLayout() {
