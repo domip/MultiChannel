@@ -144,8 +144,9 @@ public class Gui {
 
 	public void createSmsLayout() {
 
+		
 		textContent = new JTextArea(15, 35);
-		textContent.setLineWrap(true);
+		//textContent.setLineWrap(true);
 
 		receiverAdd = new JTextField(10);
 
@@ -163,6 +164,8 @@ public class Gui {
 		frame.getContentPane().add(BorderLayout.NORTH, north);
 		frame.getContentPane().add(BorderLayout.CENTER, textContent);
 		frame.getContentPane().add(BorderLayout.SOUTH, south);
+		
+		frame.setVisible(true);
 
 	}
 
