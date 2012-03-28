@@ -35,11 +35,12 @@ public class Gui {
 	private JLabel receiver;
 	private JPanel north;
 	private JPanel south;
+	private JPanel center;
 	private JTextField receiverAdd;
 	private JButton sendButton;
 	private JButton sendLaterButton;
 	private JButton getFileButton;
-	
+	private JTextField printerAdd;
 
 	public static void main(String[] args) {
 		new Gui();
@@ -134,22 +135,37 @@ public class Gui {
 		mmsItem = new JMenuItem("New MMS");
 		mmsMenu.add(mmsItem);
 		mmsItem.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				
+
 				createMmsLayout();
-				
+
 			}
 		});
-		
 
 		emailItem = new JMenuItem("New Email");
 		emailMenu.add(emailItem);
+		emailItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+				createEmailLayout();
+			}
+		});
 
 		printItem = new JMenuItem("New Printjob");
 		printMenu.add(printItem);
+		printItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				createPrintLayout();
+
+			}
+		});
 
 		aboutItem = new JMenuItem("About");
 		helpItem = new JMenuItem("Help");
@@ -161,18 +177,20 @@ public class Gui {
 	public void createSmsLayout() {
 
 		frame.getContentPane().removeAll();
-		
+
+		frame.setSize(500, 500);
+
 		textContent = new JTextArea(38, 33);
 		textContent.setLineWrap(true);
 
-		receiverAdd = new JTextField(10);
+		receiverAdd = new JTextField(15);
 
 		receiver = new JLabel("Receiver: ");
 		maxNumberCharacters = new JLabel("Max. number of characters");
 
 		sendButton = new JButton("Send");
 		sendLaterButton = new JButton("Send later");
-		
+
 		JPanel center = new JPanel();
 		north = new JPanel();
 		south = new JPanel();
@@ -180,33 +198,33 @@ public class Gui {
 		north.add(receiver);
 		north.add(receiverAdd);
 		north.setBackground(Color.GRAY);
-		
+
 		center.add(textContent);
 		center.setBackground(Color.GRAY);
-		
+
 		south.add(maxNumberCharacters);
 		south.add(sendLaterButton);
 		south.add(sendButton);
 		south.setBackground(Color.GRAY);
-		
-		
 
 		frame.getContentPane().add(BorderLayout.NORTH, north);
 		frame.getContentPane().add(BorderLayout.CENTER, center);
 		frame.getContentPane().add(BorderLayout.SOUTH, south);
-		
+
 		frame.setVisible(true);
 
 	}
 
 	public void createMmsLayout() {
-		
+
 		frame.getContentPane().removeAll();
-		
+
+		frame.setSize(500, 500);
+
 		textContent = new JTextArea(38, 33);
 		textContent.setLineWrap(true);
 
-		receiverAdd = new JTextField(10);
+		receiverAdd = new JTextField(15);
 
 		receiver = new JLabel("Receiver: ");
 		maxNumberCharacters = new JLabel("Max. number of characters");
@@ -214,7 +232,7 @@ public class Gui {
 		sendButton = new JButton("Send");
 		sendLaterButton = new JButton("Send later");
 		getFileButton = new JButton("Add File");
-		
+
 		JPanel center = new JPanel();
 		north = new JPanel();
 		south = new JPanel();
@@ -223,31 +241,95 @@ public class Gui {
 		north.add(receiverAdd);
 		north.add(getFileButton);
 		north.setBackground(Color.GRAY);
-		
+
 		center.add(textContent);
 		center.setBackground(Color.GRAY);
-		
-		
+
 		south.add(maxNumberCharacters);
 		south.add(sendLaterButton);
 		south.add(sendButton);
 		south.setBackground(Color.GRAY);
-		
-		
 
 		frame.getContentPane().add(BorderLayout.NORTH, north);
 		frame.getContentPane().add(BorderLayout.CENTER, center);
 		frame.getContentPane().add(BorderLayout.SOUTH, south);
-		
+
 		frame.setVisible(true);
 	}
 
 	public void createEmailLayout() {
-		// TODO
+
+		frame.getContentPane().removeAll();
+
+		frame.setSize(500, 500);
+
+		textContent = new JTextArea(38, 33);
+		textContent.setLineWrap(true);
+
+		receiverAdd = new JTextField(15);
+
+		receiver = new JLabel("Receiver: ");
+
+		sendButton = new JButton("Send");
+		sendLaterButton = new JButton("Send later");
+		getFileButton = new JButton("Add File");
+
+		JPanel center = new JPanel();
+		north = new JPanel();
+		south = new JPanel();
+
+		north.add(receiver);
+		north.add(receiverAdd);
+		north.add(getFileButton);
+		north.setBackground(Color.GRAY);
+
+		center.add(textContent);
+		center.setBackground(Color.GRAY);
+
+		south.add(sendLaterButton);
+		south.add(sendButton);
+		south.setBackground(Color.GRAY);
+
+		frame.getContentPane().add(BorderLayout.NORTH, north);
+		frame.getContentPane().add(BorderLayout.CENTER, center);
+		frame.getContentPane().add(BorderLayout.SOUTH, south);
+
+		frame.setVisible(true);
 	}
 
 	public void createPrintLayout() {
-		// TODO
+
+		frame.getContentPane().removeAll();
+		frame.setSize(500, 150);
+
+		printerAdd = new JTextField(15);
+
+		JLabel selectedPrinter = new JLabel("Select Printer: ");
+		JLabel selectedFile = new JLabel("selected File Path");
+
+		sendButton = new JButton("Print");
+
+		getFileButton = new JButton("Add File");
+
+		center = new JPanel();
+		north = new JPanel();
+		south = new JPanel();
+
+		north.add(selectedPrinter);
+		north.add(printerAdd);
+		north.add(getFileButton);
+		north.setBackground(Color.GRAY);
+
+		center.add(selectedFile);
+
+		south.add(sendButton);
+		south.setBackground(Color.GRAY);
+
+		frame.getContentPane().add(BorderLayout.NORTH, north);
+		frame.getContentPane().add(BorderLayout.CENTER, center);
+		frame.getContentPane().add(BorderLayout.SOUTH, south);
+
+		frame.setVisible(true);
 	}
 
 }
